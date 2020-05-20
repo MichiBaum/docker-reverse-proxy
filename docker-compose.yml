@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  reverse-proxy:
+    container_name: reverse-proxy
+    hostname: reverse-proxy
+    restart: always
+    image: nginx:1.17.10
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: 
+      - reverse-proxy-network
+
+networks:
+    reverse-proxy-network:
+        name: reverse-proxy-network
+        driver: bridge
