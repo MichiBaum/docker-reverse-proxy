@@ -11,5 +11,4 @@ services:
       - '443:443'
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    networks: 
-      - bridge
+    network_mode: bridge
