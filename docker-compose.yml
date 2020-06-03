@@ -5,12 +5,12 @@ services:
     container_name: reverse-proxy
     hostname: reverse-proxy
     restart: always
-    image: nginx:1.17.10
     ports:
       - '80:80'
       - '443:443'
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    build:
+      context: .
+      dockerfile: Dockerfile
     networks: 
       - reverse-proxy-network
 
