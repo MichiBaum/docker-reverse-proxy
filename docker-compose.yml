@@ -5,6 +5,8 @@ services:
     container_name: reverse-proxy
     hostname: reverse-proxy
     restart: always
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    depends_on: certbot
     ports:
       - '80:80'
       - '443:443'
@@ -15,6 +17,13 @@ services:
       - reverse-proxy-network
     volumes: 
       - /docker/reverse-proxy/logs/:/var/log/nginx/
+      - /docker/certbot/conf:/etc/letsencrypt
+
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - /docker/certbot/conf:/etc/letsencrypt
 
 
 networks:
