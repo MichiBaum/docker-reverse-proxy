@@ -13,6 +13,9 @@ services:
       dockerfile: Dockerfile
     networks: 
       - reverse-proxy-network
+    volumes: 
+      - /docker/reverse-proxy/logs/:/var/log/nginx/
+
 
 networks:
   reverse-proxy-network:
