@@ -6,7 +6,6 @@ services:
     hostname: reverse-proxy
     restart: always
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-    depends_on: certbot
     ports:
       - '80:80'
       - '443:443'
