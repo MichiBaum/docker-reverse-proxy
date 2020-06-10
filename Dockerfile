@@ -4,6 +4,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 RUN rm /etc/nginx/nginx.conf
 RUN rm -f /var/log/nginx/*
 
+RUN mkdir -p /etc/letsencrypt/live/michibaum.ch/
+
 COPY ./lifemanagement.conf /etc/nginx/conf.d/lifemanagement.conf
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
