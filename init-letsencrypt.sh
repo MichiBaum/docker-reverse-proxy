@@ -5,9 +5,9 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(michibaum.ch)
+domains=(michibaum.ch www.michibaum.ch)
 rsa_key_size=4096
-data_path="/docker/certbot"
+data_path="./data/certbot"
 email="michael_baumberger@gmx.ch"
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 
