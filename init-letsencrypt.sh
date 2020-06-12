@@ -18,6 +18,11 @@ if [ -d "$data_path" ]; then
   fi
 fi
 
+echo "copy options-ssl-nginx.conf"
+\cp ./options-ssl-nginx.conf ./data/certbot/conf
+
+echo "copy ssl-dhparams.pem"
+\cp ./ssl-dhparams.pem ./data/certbot/conf
 
 #if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/ssl-dhparams.pem" ]; then
 #  echo "### Downloading recommended TLS parameters ..."
