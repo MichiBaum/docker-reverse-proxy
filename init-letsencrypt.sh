@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(michibaum.ch www.michibaum.ch)
+domains=(michibaum.ch)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="michael_baumberger@gmx.ch"
