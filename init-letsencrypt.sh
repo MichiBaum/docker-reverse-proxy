@@ -10,6 +10,7 @@ rsa_key_size=4096
 data_path="./data/certbot"
 email="michael_baumberger@gmx.ch"
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
+subscribe_to_eff=1 # Set to 1 if you provided an e-mail address and want to subscribe to EFF mailings
 
 if [ -d "$data_path" ]; then
   read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
@@ -64,18 +65,27 @@ done
 
 # Select appropriate email arg
 case "$email" in
-  "") email_arg="--register-unsafely-without-email" ;;
-  *) email_arg="--email $email" ;;
+"") email_arg="--register-unsafely-without-email" ;;
+*)  email_arg="--email $email"
+		if [ $subscribe_to_eff == "1" ]; then
+			subscribe_arg="--eff-email";
+		else
+			subscribe_arg="--no-eff-email";
+		fi
+;;
 esac
 
 # Enable staging mode if needed
-if [ $staging != "0" ]; then staging_arg="--staging"; fi
+if [ $staging != "0" ]; then 
+staging_arg="--staging";
+fi
 
 docker-compose run --rm --entrypoint "\
   certbot certonly -a webroot -v --debug-challenges -w /var/www/certbot \
     $staging_arg \
     $email_arg \
     $domain_args \
+    $subscribe_arg \
     --rsa-key-size $rsa_key_size \
     --agree-tos \
     --force-renewal" certbot
