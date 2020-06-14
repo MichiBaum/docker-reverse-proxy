@@ -34,6 +34,3 @@ Additionally, you may use an awk command to display the number of responses that
 We can then display the URLs which are returning a particular status code.
 
     awk '($9 ~ /302/)' access.log | awk '{print $7}' | sort | uniq -c | sort -rn
-
-# Tutorials/Links
-- [nginx letsencrypt certbot](https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71)
