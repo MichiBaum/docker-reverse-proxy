@@ -15,7 +15,7 @@ RUN apt-get update && \
     openssl x509 -req -days 365 -in /ssl/cer/server.csr -signkey /ssl/cer/server.key -out /ssl/cer/server.crt && \
     openssl dhparam -out /ssl/cer/dhparam.pem 2048
 
-COPY ./lifemanagement.conf /etc/nginx/conf.d/lifemanagement.conf
+COPY ./proxy.conf /etc/nginx/conf.d/proxy.conf
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN rm -r /usr/share/nginx/html
