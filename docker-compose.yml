@@ -14,8 +14,8 @@ services:
     networks: 
       - reverse-proxy-network
     volumes: 
-      - ./.data/nginx/reverse-proxy/logs:/var/log/nginx
-      - ./.data/nginx/reverse-proxy/ssl:/ssl/cer
+      - ./.docker_data/reverse-proxy/logs:/var/log/nginx
+      - ./.docker_data/reverse-proxy/ssl:/ssl/cer
 
 networks:
   reverse-proxy-network:
