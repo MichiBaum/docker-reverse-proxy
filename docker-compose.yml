@@ -13,7 +13,6 @@ services:
       dockerfile: Dockerfile
     networks: 
       - reverse-proxy-network
-    volumes: 
 
 networks:
   reverse-proxy-network:
