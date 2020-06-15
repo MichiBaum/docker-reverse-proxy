@@ -1,4 +1,4 @@
-FROM nginx:1.19.0 AS BUILD
+FROM nginx:1.17.10 AS BUILD
 
 RUN rm /etc/nginx/conf.d/default.conf
 RUN rm /etc/nginx/nginx.conf
