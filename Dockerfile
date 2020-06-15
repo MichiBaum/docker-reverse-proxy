@@ -16,6 +16,7 @@ RUN apt-get update && \
     openssl dhparam -out /ssl/cer/dhparam.pem 2048
 
 COPY ./lifemanagement.conf /etc/nginx/conf.d/lifemanagement.conf
+COPY ./m152.conf /etc/nginx/conf.d/m152.conf
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN rm -r /usr/share/nginx/html
