@@ -12,9 +12,12 @@ RUN apt-get update && \
     rm /ssl/cer/server.pass.key && \
     openssl req -new -key /ssl/cer/server.key -out /ssl/cer/server.csr \
         -subj "/C=CH/ST=Graubuenden/L=Chur/O='.'/OU='.' Department/CN=michibaum.ch" && \
-    openssl x509 -req -days 365 -in /ssl/cer/server.csr -signkey /ssl/cer/server.key -out /ssl/cer/server.crt
+    openssl req -x509 -days 365 -in /ssl/cer/server.csr -signkey /ssl/cer/server.key -out /ssl/cer/server.crt && \
+    openssl dhparam -out /ssl/cer/dhparam.pem 2048
 
 COPY ./lifemanagement.conf /etc/nginx/conf.d/lifemanagement.conf
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN rm -r /usr/share/nginx/html
+
+RUN nginx -t
