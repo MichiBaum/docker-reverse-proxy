@@ -1,6 +1,6 @@
 User-agent: *
-Allow:
-/lifemanagement
-/m152
-Disallow:
-/
+Allow: /lifemanagement
+Allow: /lifemanagement/*
+Allow: /m152
+Allow: /m152/*
+Disallow: /
