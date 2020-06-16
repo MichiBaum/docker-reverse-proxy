@@ -3,4 +3,3 @@ Allow: /lifemanagement
 Allow: /lifemanagement/*
 Allow: /m152
 Allow: /m152/*
-Disallow: /
