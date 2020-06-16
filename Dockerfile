@@ -16,6 +16,7 @@ RUN apt-get update && \
     openssl dhparam -out /ssl/cer/dhparam.pem 2048
 
 COPY ./proxy.conf /etc/nginx/conf.d/proxy.conf
+COPY ./robots.txt /etc/nginx/robots.txt
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN rm -r /usr/share/nginx/html
