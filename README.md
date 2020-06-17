@@ -1,11 +1,11 @@
 # Reverse proxy for: 
 - lifemanagement-backend
 - lifemanagement-frontend
+- m152
 
 # Configuration
 - nginx.conf
-- meme.types
-- lifemanagement.conf
+- proxy.conf
 
 # Access logs
 There are various ways you can use to display or parse the error/access logs. Using the cat command will display the complete access or error log file in your terminal window. For example you could use the following to display the contents of each file:
@@ -34,3 +34,6 @@ Additionally, you may use an awk command to display the number of responses that
 We can then display the URLs which are returning a particular status code.
 
     awk '($9 ~ /302/)' access.log | awk '{print $7}' | sort | uniq -c | sort -rn
+
+# Reload config
+    docker exec reverse-proxy nginx -s reload
