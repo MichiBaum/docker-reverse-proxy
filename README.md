@@ -31,6 +31,12 @@ Additionally, you may use an awk command to display the number of responses that
     1 403
     1 301
 
+## Access logs from host
+
+    docker exec reverse-proxy tail -n 100 /var/log/nginx/access.log
+
+    docker exec reverse-proxy tail -n 100 /var/log/nginx/error.log
+
 We can then display the URLs which are returning a particular status code.
 
     awk '($9 ~ /302/)' access.log | awk '{print $7}' | sort | uniq -c | sort -rn
