@@ -6,14 +6,14 @@
 
 echo "Start entrypoint script"
 
-if [[ ! -f /usr/share/nginx/certificates/fullchain.pem ]];then
+if [ ! -f /usr/share/nginx/certificates/fullchain.pem ];then
     mkdir -p /usr/share/nginx/certificates
 fi
 
 echo "Start certificates generation"
 
 ### If certificates don't exist yet we must ensure we create them to start nginx
-if [[ ! -f /usr/share/nginx/certificates/fullchain.pem ]]; then
+if [ ! -f /usr/share/nginx/certificates/fullchain.pem ]; then
     openssl genrsa -out /usr/share/nginx/certificates/privkey.pem 4096
     openssl req -new -key /usr/share/nginx/certificates/privkey.pem -out /usr/share/nginx/certificates/cert.csr -nodes -subj \
     "/C=CH/ST=Graubuenden/L=Chur/O='.'/OU='.' Department/CN=michibaum.ch"
