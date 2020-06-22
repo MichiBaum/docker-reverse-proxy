@@ -11,7 +11,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN apt-get update && \
     apt-get update
 
-RUN apk add inotify-tools certbot openssl
+RUN apt-get install -y inotify-tools certbot openssl
 WORKDIR /opt
 COPY entrypoint.sh nginx-letsencrypt
 COPY certbot.sh certbot.sh
