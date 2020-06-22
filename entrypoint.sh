@@ -4,9 +4,13 @@
 
 #Ensure we have folders available
 
+echo "Start entrypoint script"
+
 if [[ ! -f /usr/share/nginx/certificates/fullchain.pem ]];then
     mkdir -p /usr/share/nginx/certificates
 fi
+
+echo "Start certificates generation"
 
 ### If certificates don't exist yet we must ensure we create them to start nginx
 if [[ ! -f /usr/share/nginx/certificates/fullchain.pem ]]; then
@@ -17,6 +21,8 @@ if [[ ! -f /usr/share/nginx/certificates/fullchain.pem ]]; then
     openssl x509 -req -days 365 -in /usr/share/nginx/certificates/cert.csr -signkey /usr/share/nginx/certificates/privkey.pem -out /usr/share/nginx/certificates/fullchain.pem
 fi
 
+echo "End certificates generation"
+
 ### Send certbot Emission/Renewal to background
 $(while :; do /opt/certbot.sh; sleep "${RENEW_INTERVAL:-12h}"; done;) &
 
@@ -25,3 +31,5 @@ $(while inotifywait -e close_write /usr/share/nginx/certificates; do nginx -s re
 
 ### Start nginx with daemon off as our main pid
 nginx -g "daemon off;"
+
+echo "End entrypoint script"
