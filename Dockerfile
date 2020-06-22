@@ -1,13 +1,12 @@
 FROM nginx:1.17.10
 
-RUN rm /etc/nginx/conf.d/default.conf
-RUN rm /etc/nginx/nginx.conf
-RUN rm -f /var/log/nginx/*
+RUN rm /etc/nginx/conf.d/default.conf && \
+    rm /etc/nginx/nginx.conf && \
+    rm -f /var/log/nginx/* && \
+    rm -r /usr/share/nginx/html
 
 COPY ./robots.txt /etc/nginx/robots.txt
 COPY ./nginx.conf /etc/nginx/nginx.conf
-
-RUN rm -r /usr/share/nginx/html
 
 RUN apt-get update && \
     apt-get update
