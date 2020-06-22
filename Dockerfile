@@ -12,11 +12,11 @@ RUN apt-get update && \
     apt-get update
 
 RUN apt-get install -y inotify-tools certbot openssl
-WORKDIR /opt
-COPY ./entrypoint.sh nginx-letsencrypt
-COPY ./certbot.sh certbot.sh
+COPY ./entrypoint.sh /opt/nginx-letsencrypt/entrypoint.sh
+COPY ./certbot.sh /opt/certbot.sh
 COPY ./default.conf /etc/nginx/conf.d/default.conf
-COPY ./ssl-options/ /etc/ssl-options
-RUN chmod +x nginx-letsencrypt && \
-    chmod +x certbot.sh 
-ENTRYPOINT ["./nginx-letsencrypt"]
+COPY ./ssl-options/options-nginx-ssl.conf /etc/ssl-options/options-nginx-ssl.conf
+COPY ./ssl-options/ssl-dhparams.pem /etc/ssl-options/ssl-dhparams.pem
+RUN chmod +x /opt/nginx-letsencrypt/entrypoint.sh && \
+    chmod +x /opt/certbot.sh
+ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
