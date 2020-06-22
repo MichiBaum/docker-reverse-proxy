@@ -11,8 +11,48 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - reverse-proxy_html:/var/www/html
+      - reverse-proxy_conf:/etc/nginx/conf.d
+      - certbot_etc:/etc/letsencrypt
+      - certbot_var_lib:/var/lib/letsencrypt
     networks: 
       - reverse-proxy-network
+  
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot_etc:/etc/letsencrypt
+      - certbot_var_lib:/var/lib/letsencrypt
+      - reverse-proxy_html:/var/www/html
+    depends_on:
+      - reverse-proxy
+    command: certonly --webroot --webroot-path=/var/www/html --email michael_baumberger@gmx.ch --agree-tos --no-eff-email --staging -d michibaum.ch
+    networks: 
+      - reverse-proxy-network
+
+volumes: 
+  reverse-proxy_html:
+    driver_opts:
+      type: none
+      device: /docker/reverse-proxy/html
+      o: bind
+  reverse-proxy_conf:
+    driver_opts:
+      type: none
+      device: /docker/reverse-proxy/conf
+      o: bind
+  certbot_etc:
+    driver_opts:
+      type: none
+      device: /docker/certbot/etc
+      o: bind
+  certbot_var_lib:
+    driver_opts:
+      type: none
+      device: /docker/certbot/var/lib
+      o: bind
 
 networks:
   reverse-proxy-network:
