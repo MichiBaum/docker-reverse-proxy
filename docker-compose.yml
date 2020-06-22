@@ -11,29 +11,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - reverse-proxy_conf:/etc/nginx/conf.d
-      - certbot_etc:/etc/letsencrypt
-      - certbot_var_lib:/var/lib/letsencrypt
     networks: 
       - reverse-proxy-network
-
-volumes: 
-  reverse-proxy_conf:
-    driver_opts:
-      type: none
-      device: /docker/reverse-proxy/conf
-      o: bind
-  certbot_etc:
-    driver_opts:
-      type: none
-      device: /docker/certbot/etc
-      o: bind
-  certbot_var_lib:
-    driver_opts:
-      type: none
-      device: /docker/certbot/var/lib
-      o: bind
 
 networks:
   reverse-proxy-network:
