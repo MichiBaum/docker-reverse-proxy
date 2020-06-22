@@ -12,5 +12,5 @@ RUN rm -r /usr/share/nginx/html
 
 RUN apt-get update && \
     apt-get update && \
-    apt-get install python-certbot-nginx && \
+    apt-get --assume-yes install python-certbot-nginx && \
     certbot --nginx --email michael_baumberger@gmx.ch --agree-tos --no-eff-email --staging -d michibaum.ch
