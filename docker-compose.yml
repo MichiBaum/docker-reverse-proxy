@@ -8,6 +8,9 @@ services:
     ports:
       - '80:80'
       - '443:443'
+    environment: 
+      - DOMAIN=michibaum.ch
+      - EMAIL=michael_baumberger@gmx.ch
     build:
       context: .
       dockerfile: Dockerfile
