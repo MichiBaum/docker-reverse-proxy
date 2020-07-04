@@ -11,6 +11,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes: 
+      - /docker/reverse-proxy/logs:/var/log/nginx
     networks: 
       - reverse-proxy-network
 
