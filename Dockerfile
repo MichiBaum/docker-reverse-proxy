@@ -8,7 +8,8 @@ RUN rm /etc/nginx/conf.d/default.conf && \
 COPY ./robots.txt /etc/nginx/robots.txt
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-RUN apt-get update && \
+RUN apt-get install nginx-module-geoip && \
+    apt-get update && \
     apt-get update
 
 RUN apt-get install -y inotify-tools certbot openssl
