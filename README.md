@@ -1,7 +1,6 @@
 # Reverse proxy for: 
 - lifemanagement-backend
 - lifemanagement-frontend
-- m152
 
 # Configuration
 - nginx.conf
