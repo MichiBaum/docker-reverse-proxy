@@ -1,0 +1,9 @@
+Enable sysctl based protection
+Additionally we can tweak kernel and system variables in our server. Edit the file /etc/sysctl.conf, and set these two lines to 1 like this:
+
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.tcp_syncookies = 1
+
+The first parameter enables protection against IP spoofing, and the second allows TCP SYN cookie protection.
+
+
