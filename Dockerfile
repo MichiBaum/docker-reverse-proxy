@@ -29,6 +29,6 @@ RUN chmod +x /opt/nginx-letsencrypt/entrypoint.sh && \
     chmod +x /opt/certbot.sh
 
 # TODO create random password
-RUN htpasswd -c /var/www/goaccess/.htpasswd admin admin
+RUN htpasswd -b -c /var/www/goaccess/.htpasswd admin admin
 
 ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
