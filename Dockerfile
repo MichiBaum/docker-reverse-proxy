@@ -10,9 +10,10 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN apt-get update && \
     apt-get update && \
-    apt-get install apache2-utils && \
-    apt-get install goaccess && \
+    apt-get install -y apache2-utils && \
+    apt-get install -y goaccess && \
     apt-get install -y inotify-tools certbot openssl && \
+    apt-get install -y cron && \
     apt-get update && \
     apt-get clean  && \
     apt-get autoclean && \
