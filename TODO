@@ -5,12 +5,3 @@ net.ipv4.conf.all.rp_filter = 1
 net.ipv4.tcp_syncookies = 1
 
 The first parameter enables protection against IP spoofing, and the second allows TCP SYN cookie protection.
-
-
-# GOACCESS
-sudo apt-get install goaccess
-
-goaccess -f /var/log/nginx/access.log --log-format=combined -o /var/www/goaccess/log_analysis_default.html
-
-./nginx2goaccess.sh FORMAT
-goaccess -f /var/log/nginx/access.log --log-format=OUTPUT_ABOVE --date-format=OUTPUT_ABOVE --time-format=OUTPUT_ABOVE -o /var/www/goaccess/log_analysis.html
