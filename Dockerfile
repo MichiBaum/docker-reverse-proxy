@@ -17,7 +17,7 @@ COPY ./entrypoint.sh /opt/nginx-letsencrypt/entrypoint.sh
 COPY ./certbot.sh /opt/certbot.sh
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 COPY ./ssl-options/options-nginx-ssl.conf /etc/ssl-options/options-nginx-ssl.conf
-COPY ./ssl-options/ssl-dhparams.pem /etc/ssl-options/ssl-dhparams.pem
+RUN openssl dhparam -out /etc/ssl-options/ssl-dhparams.pem 2048
 RUN chmod +x /opt/nginx-letsencrypt/entrypoint.sh && \
     chmod +x /opt/certbot.sh
 ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
