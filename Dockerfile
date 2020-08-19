@@ -10,9 +10,15 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN apt-get update && \
     apt-get update && \
-    apt-get install apache2-utils
+    apt-get install apache2-utils && \
+    apt-get install goaccess && \
+    apt-get install -y inotify-tools certbot openssl && \
+    apt-get update && \
+    apt-get clean  && \
+    apt-get autoclean && \
+    apt-get autoremove && \
+    apt-get --purge autoremove
     
-RUN apt-get install -y inotify-tools certbot openssl
 COPY ./entrypoint.sh /opt/nginx-letsencrypt/entrypoint.sh
 COPY ./certbot.sh /opt/certbot.sh
 COPY ./default.conf /etc/nginx/conf.d/default.conf
