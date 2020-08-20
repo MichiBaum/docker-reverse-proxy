@@ -39,12 +39,12 @@ RUN chmod +x /opt/nginx-letsencrypt/entrypoint.sh && \
     chmod +x /opt/certbot.sh
 
 #Install Goaccess
-RUN wget http://tar.goaccess.io/goaccess-1.4.tar. && \
-    tar -xzvf goaccess-1.4.tar.gz && \
-    ./goaccess-1.4/configure --enable-utf8 --enable-geoip=mmdb && \
-    make && \
-    make install && \
-    ln -s /usr/local/bin/goaccess /usr/bin/goaccess
+RUN wget http://tar.goaccess.io/goaccess-1.4.tar.gz
+RUN tar -xzvf goaccess-1.4.tar.gz
+RUN ./goaccess-1.4/configure --enable-utf8 --enable-geoip=mmdb
+RUN make
+RUN make install
+RUN ln -s /usr/local/bin/goaccess /usr/bin/goaccess
 
 # TODO change goaccess config
 RUN mkdir -p /var/www/goaccess/
