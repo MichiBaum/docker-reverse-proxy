@@ -28,8 +28,9 @@ RUN openssl dhparam -out /etc/ssl-options/ssl-dhparams.pem 2048
 RUN chmod +x /opt/nginx-letsencrypt/entrypoint.sh && \
     chmod +x /opt/certbot.sh
 
-# TODO create random password
+# TODO change goaccess config
 RUN mkdir -p /var/www/goaccess/
+# TODO create random password
 RUN htpasswd -b -c /var/www/goaccess/.htpasswd admin admin
 
 COPY ./cronjobs/goaccess /etc/cron.d/goaccess

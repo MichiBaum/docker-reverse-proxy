@@ -1,1 +1,1 @@
-*/5 * * * * root /usr/bin/goaccess -f /var/log/nginx/access.log -o /var/www/goaccess/log_analysis_default.html
+*/5 * * * * root /usr/bin/goaccess -f /var/log/nginx/access_default.log -o /var/www/goaccess/log_analysis_default.html
