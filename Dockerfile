@@ -17,6 +17,7 @@ RUN apt-get update && \
     apt-get -y install libncursesw5-dev libgeoip-dev libmaxminddb-dev && \
     apt-get install -y inotify-tools certbot openssl && \
     apt-get install -y cron && \
+    apt-get install -y wget && \
     apt-get update && \
     apt-get clean  && \
     apt-get autoclean && \
