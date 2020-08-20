@@ -42,7 +42,7 @@ RUN chmod +x /opt/nginx-letsencrypt/entrypoint.sh && \
 RUN wget http://tar.goaccess.io/goaccess-1.4.tar.gz && \
     tar -xzvf goaccess-1.4.tar.gz && \
     ./goaccess-1.4/configure --enable-utf8 --enable-geoip=mmdb && \
-    touch resources/tpls.html.tmp > resources/tpls.html.tmp && \
+    mkdir ./resources && \
     make && \
     make install && \
     ln -s /usr/local/bin/goaccess /usr/bin/goaccess
