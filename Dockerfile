@@ -12,14 +12,12 @@ RUN rm /etc/nginx/conf.d/default.conf && \
 RUN apt-get update && \
     apt-get update && \
     apt-get -y upgrade && \
-    apt-get install -y systemd && \
     apt-get install -y apache2-utils && \
     apt-get -y install libncursesw5-dev gcc make && \
     apt-get -y install libncursesw5-dev libgeoip-dev libmaxminddb-dev && \
     apt-get install -y inotify-tools certbot openssl && \
     apt-get install -y cron && \
     apt-get install -y wget && \
-    apt-get install -y supervisor && \
     apt-get update && \
     apt-get clean  && \
     apt-get autoclean && \
@@ -55,7 +53,5 @@ RUN mkdir -p /var/www/goaccess/
 RUN htpasswd -b -c /var/www/goaccess/.htpasswd admin admin
 
 COPY ./goaccess/goaccess_cronjob /etc/cron.d/goaccess_cronjob
-COPY ./supervisor/goaccess_supervisor.conf /etc/supervisor/conf.d/goaccess_supervisor.conf
-COPY ./supervisor/letsencrypt_supervisor.conf /etc/supervisor/conf.d/letsencrypt_supervisor.conf
 
-ENTRYPOINT ["service supervisor start && supervisorctl reread && supervisorctl update"]
+ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
