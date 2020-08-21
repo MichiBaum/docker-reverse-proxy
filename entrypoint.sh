@@ -7,7 +7,7 @@
 echo "Start entrypoint script"
 
 echo "Start cronjob"
-/etc/init.d/crond start
+/etc/init.d/cron start
 echo "Finished cronjob"
 
 if [ ! -f /usr/share/nginx/certificates/fullchain.pem ];then
