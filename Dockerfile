@@ -53,5 +53,6 @@ RUN mkdir -p /var/www/goaccess/
 RUN htpasswd -b -c /var/www/goaccess/.htpasswd admin admin
 
 COPY ./goaccess/goaccess_cronjob /etc/cron.d/goaccess_cronjob
+COPY ./goaccess/goaccess_cronjob /var/spool/cron/crontabs/goaccess_cronjob
 
 ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
