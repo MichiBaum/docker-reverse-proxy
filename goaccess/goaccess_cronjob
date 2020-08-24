@@ -1,1 +1,0 @@
-*/5 * * * * root /usr/bin/goaccess -f /var/log/nginx/access_default.log --config-file /etc/goacces_custom.conf -o /var/www/goaccess/log_analysis_default.html -a > /dev/null 2>&1
