@@ -52,6 +52,6 @@ RUN mkdir -p /var/www/goaccess/
 # TODO create random password
 RUN htpasswd -b -c /var/www/goaccess/.htpasswd admin admin
 
-RUN (crontab -l 2>/dev/null; echo "*/5 * * * * /usr/bin/goaccess -f /var/log/nginx/access_default.log --config-file /etc/goacces_custom.conf -o /var/www/goaccess/log_analysis_default.html -a > /dev/null 2>&1") | crontab -
+COPY ./goaccess/goaccess_conjob /etc/cron.hourly/goaccess_conjob
 
 ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
