@@ -52,6 +52,6 @@ RUN mkdir -p /var/www/goaccess/
 # TODO create random password
 RUN htpasswd -b -c /var/www/goaccess/.htpasswd admin admin
 
-COPY ./goaccess/goaccess_conjob /etc/cron.hourly/goaccess_conjob
+COPY ./goaccess/goaccess-conjob /etc/crond.d/goaccess-conjob
 
 ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
