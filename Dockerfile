@@ -1,6 +1,6 @@
 FROM nginx:1.17.10
 LABEL version="1.0"
-LABEL author="Michael Baumberger"
+LABEL maintainer="Michael Baumberger"
 
 # Remove default shit
 RUN rm /etc/nginx/conf.d/default.conf && \
