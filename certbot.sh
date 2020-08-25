@@ -1,6 +1,7 @@
 if [ ! -f /var/www/certbot ]; then
     mkdir -p /var/www/certbot
 fi
+# Remove --test-cert if not testing anymore
 certbot certonly \
         --config-dir "/etc/letsencrypt" \
 		--agree-tos \
@@ -10,6 +11,7 @@ certbot certonly \
 		--noninteractive \
 		--webroot \
 		--webroot-path /var/www/certbot \
+		--test-cert \
 		$OPTIONS || true
 
 if [ -f "/etc/letsencrypt/live/michibaum.ch/privkey.pem" ]; then
