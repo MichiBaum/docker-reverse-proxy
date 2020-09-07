@@ -52,6 +52,13 @@ RUN mkdir -p /var/www/goaccess/
 # TODO create random password
 RUN htpasswd -b -c /var/www/goaccess/.htpasswd admin admin
 
+# Copy goaccess-conjob file to the cron.d directory
 COPY ./goaccess/goaccess-conjob /etc/crond.d/goaccess-conjob
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/crond.d/goaccess-conjob
+# Apply cron job
+RUN crontab /etc/crond.d/goaccess-conjob
+# Create the log file
+RUN touch /var/log/cron.log
 
-ENTRYPOINT ["/opt/nginx-letsencrypt/entrypoint.sh"]
+CMD cron && /opt/nginx-letsencrypt/entrypoint.sh
