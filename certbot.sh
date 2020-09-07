@@ -1,7 +1,7 @@
 if [ ! -f /var/www/certbot ]; then
     mkdir -p /var/www/certbot
 fi
-# Remove --test-cert if not testing anymore
+# --test-cert or --staging for testing
 certbot certonly \
         --config-dir "/etc/letsencrypt" \
 		--agree-tos \
