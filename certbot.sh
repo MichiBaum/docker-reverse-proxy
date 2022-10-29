@@ -11,6 +11,7 @@ certbot certonly \
 		--noninteractive \
 		--webroot \
 		--webroot-path /var/www/certbot \
+		--staging \
 		$OPTIONS || true
 
 if [ -f "/etc/letsencrypt/live/michibaum.ch/privkey.pem" ]; then

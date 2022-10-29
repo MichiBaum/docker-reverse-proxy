@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /lifemanagement
-Allow: /lifemanagement/*
+Disallow: /
