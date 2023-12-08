@@ -1,4 +1,4 @@
-FROM nginx:1.23.2
+FROM nginx:1.25.3
 LABEL version="1.0"
 LABEL maintainer="Michael Baumberger"
 

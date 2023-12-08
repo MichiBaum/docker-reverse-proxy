@@ -3,3 +3,5 @@ docker-reverse-proxy.code-workspace
 .gitignore
 LICENSE
 TODO
+.idea
+docker-reverse-proxy.iml

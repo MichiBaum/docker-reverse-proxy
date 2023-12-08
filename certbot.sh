@@ -3,9 +3,9 @@ if [ ! -f /var/www/certbot ]; then
 fi
 # --test-cert or --staging for testing
 certbot certonly \
-        --config-dir "/etc/letsencrypt" \
+    --config-dir "/etc/letsencrypt" \
 		--agree-tos \
-		--domains "michibaum.ch" \
+		--domains "*.michibaum.ch" \
 		--email "michael_baumberger@gmx.ch" \
 		--expand \
 		--noninteractive \
